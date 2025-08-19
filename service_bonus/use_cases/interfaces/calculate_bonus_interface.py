@@ -7,5 +7,5 @@ from service_bonus.domain.worker import Worker
 class ICalculateBonus(ABC):
 
     @abstractmethod
-    def calculate(self, worker: Worker, calculated_period, calculated_period_method) -> float:
+    def calculate(self, worker: Worker, calculated_period, calculated_period_method) -> dict:
         pass
