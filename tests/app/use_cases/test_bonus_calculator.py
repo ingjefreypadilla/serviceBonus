@@ -41,18 +41,17 @@ def worker():
 
 @pytest.fixture
 def expected_bonus():
-
     return {
-            "empleado": "Jefrey Padilla",
-            "periodo_calculo": "primer_semestre",
-            "salario_base_prima": 0,
-            "dias_trabajados_semestre": 0,
-            "prima_bruta": 0,
-            "renta_exenta_25_por_ciento": 0,
-            "base_gravable_impuesto": 0,
-            "impuesto_retenido": 0,
-            "prima_neta": 0
-        }
+        "empleado": "Jefrey Padilla",
+        "periodo_calculo": "primer_semestre",
+        "salario_base_prima": 3100000,
+        "dias_trabajados_semestre": 105,
+        "prima_bruta": 863013.70,
+        "renta_exenta_25_por_ciento": 215753.42,
+        "base_gravable_impuesto": 647260.28,
+        "impuesto_retenido": 0,
+        "prima_neta": 863013.70
+    }
 
 def test_should_calculate_bonus(calculator, worker, expected_bonus):
     calculated_period = "primer_semestre"
