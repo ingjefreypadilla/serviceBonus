@@ -19,7 +19,7 @@ def run():
         else:
             data = json.loads(args.json)
     except Exception as e:
-        print(f"Error reading JSON: {e}")
+        print(f"Error reading JSON or JSON Params Invalid: {e}")
         return
 
     start_date = datetime.strptime(data["fecha_ingreso"], "%Y-%m-%d").date()

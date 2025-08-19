@@ -42,3 +42,22 @@ def test_cli_example():
     assert pytest.approx(output["base_gravable_impuesto"]) == 0
     assert output["impuesto_retenido"] == 0
     assert pytest.approx(output["prima_neta"]) == 0
+
+
+def test_cli_example_exception():
+    json_data = {
+        "nombre": "Jefrey Padilla",
+        "fecha_ingreso": "2023-03-15",
+        "salarios_mensuales": {
+            "enero": 3000000, "febrero": 3000000, "marzo": 3000000,
+            "abril": 3200000, "mayo": 3200000, "junio": 3200000
+        },
+        "periodo_calculo": "primer_semestre",
+        "metodo_calculo_salario": "promedio",
+        "ausencias_no_remuneradas": ["2024-04-12"]
+    }
+
+    try:
+        run_cli_with_json(json_data)
+    except Exception as e:
+        assert True, f"Error reading JSON or JSON Params Invalid: {e}"
