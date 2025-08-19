@@ -1,8 +1,8 @@
-# app/interfaces/cli.py
+# service_bonus/interfaces/cli.py
 import argparse
 
-from app.use_cases.calculate_bonus import BonusCalculator
-from app.use_cases.interfaces.calculate_bonus_interface import ICalculateBonus
+from service_bonus.use_cases.calculate_bonus import BonusCalculator
+from service_bonus.use_cases.interfaces.calculate_bonus_interface import ICalculateBonus
 
 
 def run():

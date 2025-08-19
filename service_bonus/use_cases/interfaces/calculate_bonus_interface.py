@@ -1,4 +1,4 @@
-# app/use_cases/interfaces/calculate_bonus_interface.py
+# service_bonus/use_cases/interfaces/calculate_bonus_interface.py
 from abc import ABC, abstractmethod
 
 class ICalculateBonus(ABC):

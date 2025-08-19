@@ -1,6 +1,6 @@
-# app/use_cases/calculate_bonus.py
-from app.domain.worker import Worker
-from app.use_cases.interfaces.calculate_bonus_interface import ICalculateBonus
+# service_bonus/use_cases/calculate_bonus.py
+from service_bonus.domain.worker import Worker
+from service_bonus.use_cases.interfaces.calculate_bonus_interface import ICalculateBonus
 
 
 class BonusCalculator(ICalculateBonus):

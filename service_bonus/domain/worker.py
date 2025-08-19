@@ -1,4 +1,4 @@
-# app/domain/cli.py
+# service_bonus/domain/cli.py
 from dataclasses import dataclass
 
 @dataclass
