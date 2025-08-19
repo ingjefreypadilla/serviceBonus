@@ -1,8 +1,11 @@
-# service_bonus/domain/cli.py
+# service_bonus/domain/worker.py
 from dataclasses import dataclass
+from datetime import date
+from typing import Dict, List
 
 @dataclass
 class Worker:
     name: str
-    years_of_service: int
-    base_salary: float
+    start_date: date
+    monthly_salaries: Dict[str, float]
+    unpaid_absences: List[date]

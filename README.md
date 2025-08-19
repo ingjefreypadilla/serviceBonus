@@ -59,16 +59,23 @@ pip install -r requirements.txt
 Run the CLI with:
 
 ```bash
-python main.py --name Alice --years 12 --salary 3000
+python main.py --json input/jefrey.json
 ```
 
 ### Example Output
 
-```
-Worker: Alice
-Years of service: 12
-Base salary: $3000.00
-Service bonus: $1800.00
+```json
+{
+  "empleado": "Jefrey Padilla",
+  "periodo_calculo": "primer_semestre",
+  "salario_base_prima": 0,
+  "dias_trabajados_semestre": 0,
+  "prima_bruta": 0,
+  "renta_exenta_25_por_ciento": 0,
+  "base_gravable_impuesto": 0,
+  "impuesto_retenido": 0,
+  "prima_neta": 0
+}
 ```
 
 ---

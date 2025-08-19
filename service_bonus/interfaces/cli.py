@@ -1,24 +1,41 @@
 # service_bonus/interfaces/cli.py
 import argparse
+import json
+from datetime import datetime
 
+from service_bonus.domain.worker import Worker
 from service_bonus.use_cases.calculate_bonus import BonusCalculator
-from service_bonus.use_cases.interfaces.calculate_bonus_interface import ICalculateBonus
 
 
 def run():
     parser = argparse.ArgumentParser(description="Service Bonus Calculator CLI")
-    parser.add_argument("--name", type=str, required=True)
-    parser.add_argument("--years", type=int, required=True)
-    parser.add_argument("--salary", type=float, required=True)
-
+    parser.add_argument("--json", type=str, required=True, help="JSON string or file path with worker data")
     args = parser.parse_args()
 
-    name, years, salary = args.name, args.years, args.salary
+    try:
+        if args.json.endswith(".json"):
+            with open(args.json, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        else:
+            data = json.loads(args.json)
+    except Exception as e:
+        print(f"Error reading JSON: {e}")
+        return
 
-    calculator: ICalculateBonus = BonusCalculator()
-    bonus = calculator.calculate(name, years, salary)
+    start_date = datetime.strptime(data["fecha_ingreso"], "%Y-%m-%d").date()
+    unpaid_absences = [datetime.strptime(d, "%Y-%m-%d").date() for d in data.get("ausencias_no_remuneradas", [])]
 
-    print(f"Worker: {name}")
-    print(f"Years of service: {years}")
-    print(f"Base salary: ${salary:.2f}")
-    print(f"Service bonus: ${bonus:.2f}")
+    worker = Worker(
+        name=data["nombre"],
+        start_date=start_date,
+        monthly_salaries=data["salarios_mensuales"],
+        unpaid_absences=unpaid_absences
+    )
+
+    calculator = BonusCalculator()
+    result = calculator.calculate(worker,
+                                calculated_period=data.get("periodo_calculo", "primer_semestre"),
+                                calculated_period_method=data.get("metodo_calculo_salario", "promedio"))
+
+    print(json.dumps(result, indent=2, ensure_ascii=False))
+
