@@ -61,21 +61,49 @@ Run the CLI with:
 ```bash
 python main.py --json input/jefrey.json
 ```
+### Example Input
+```json
+{
+  "nombre": "Jefrey Padilla",
+  "fecha_ingreso": "2023-03-15",
+  "salarios_mensuales": {
+    "enero": 3000000,
+    "febrero": 3000000,
+    "marzo": 3000000,
+    "abril": 3200000,
+    "mayo": 3200000,
+    "junio": 3200000,
+    "julio": 3200000,
+    "agosto": 3200000,
+    "septiembre": 3500000,
+    "octubre": 3500000,
+    "noviembre": 3500000,
+    "diciembre": 3500000
+  },
+  "periodo_calculo": "primer_semestre",
+  "metodo_calculo_salario": "promedio",
+  "ausencias_no_remuneradas": [
+    "2024-04-12",
+    "2024-04-15"
+  ]
+}
+```
+
 
 ### Example Output
 
 ```json
 {
-  "empleado": "Jefrey Padilla",
-  "periodo_calculo": "primer_semestre",
-  "salario_base_prima": 0,
-  "dias_trabajados_semestre": 0,
-  "prima_bruta": 0,
-  "renta_exenta_25_por_ciento": 0,
-  "base_gravable_impuesto": 0,
-  "impuesto_retenido": 0,
-  "prima_neta": 0
-}
+        "empleado": "Jefrey Padilla",
+        "periodo_calculo": "primer_semestre",
+        "salario_base_prima": 3100000,
+        "dias_trabajados_semestre": 105,
+        "prima_bruta": 863013.70,
+        "renta_exenta_25_por_ciento": 215753.42,
+        "base_gravable_impuesto": 647260.28,
+        "impuesto_retenido": 0,
+        "prima_neta": 863013.70
+    }
 ```
 
 ---
