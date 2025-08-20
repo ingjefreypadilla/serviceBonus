@@ -7,11 +7,21 @@ A simple **Python CLI** project built with **Clean Architecture** principles to 
 ## 📂 Project Structure
 
 ```
-service_bonus_cli/
-│── pyproject.toml        # or requirements.txt
+serviceBonus/
+│── pyproject.toml
+│── .gitignore.toml
+│── docker-compose.toml
+│── Dockerfile.toml
+│── requirements.txt
 │── README.md
-│── app/
+│── service_bonus/
 │   ├── domain/           # Core business logic (Entities, Models)
+│   │   ├── entities
+│   │   │   ├──utils
+│   │   │   │   ├──date_util.py
+│   │   │   ├──calculate_base_salary.py
+│   │   │   ├──calculate_worked_days.py
+│   │   │   └──calculate_worked_days.py
 │   │   └── worker.py
 │   │
 │   ├── use_cases/        # Application rules (Interactors)
@@ -22,6 +32,8 @@ service_bonus_cli/
 │   │   └── repositories.py
 │   │
 │   └── interfaces/       # Delivery layer (CLI)
+│       ├──dto
+│       │   └──worker_input.py
 │       └── cli.py
 │
 └── main.py               # CLI entry point
@@ -54,7 +66,12 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Usage
+## ▶️ How to run
+
+#### Prior to Execution
+If you wish to modify the file, you should replace the file located at /input/jefrey.json with another file that aligns with your preferences.
+
+### Via Local
 
 Run the CLI with:
 
@@ -62,67 +79,74 @@ Run the CLI with:
 python main.py --json input/jefrey.json
 ```
 
+### Via Dockerfile
+
+```bash
+# Build image
+docker build -t worker_cli_app .
+
+# Run container
+docker run --rm worker_cli_app --json input/jefrey.json
+```
+
+#### Via DockerCompose
+```bash
+# Build image
+docker-compose build
+
+# Run container
+docker-compose run --rm worker_cli --json input/jefrey.json
+```
+
+
+---
+
+## ▶️ Usage
+
+### Example Input
+```json
+{
+  "nombre": "Jefrey Padilla",
+  "fecha_ingreso": "2023-03-15",
+  "salarios_mensuales": {
+    "enero": 3000000,
+    "febrero": 3000000,
+    "marzo": 3000000,
+    "abril": 3200000,
+    "mayo": 3200000,
+    "junio": 3200000,
+    "julio": 3200000,
+    "agosto": 3200000,
+    "septiembre": 3500000,
+    "octubre": 3500000,
+    "noviembre": 3500000,
+    "diciembre": 3500000
+  },
+  "periodo_calculo": "primer_semestre",
+  "metodo_calculo_salario": "promedio",
+  "ausencias_no_remuneradas": [
+    "2023-04-12",
+    "2023-04-15"
+  ]
+}
+```
+
+
 ### Example Output
 
 ```json
 {
-  "empleado": "Jefrey Padilla",
-  "periodo_calculo": "primer_semestre",
-  "salario_base_prima": 0,
-  "dias_trabajados_semestre": 0,
-  "prima_bruta": 0,
-  "renta_exenta_25_por_ciento": 0,
-  "base_gravable_impuesto": 0,
-  "impuesto_retenido": 0,
-  "prima_neta": 0
-}
+        "empleado": "Jefrey Padilla",
+        "periodo_calculo": "primer_semestre",
+        "salario_base_prima": 3100000,
+        "dias_trabajados_semestre": 118,
+        "prima_bruta": 863013.70,
+        "renta_exenta_25_por_ciento": 215753.42,
+        "base_gravable_impuesto": 647260.28,
+        "impuesto_retenido": 0,
+        "prima_neta": 863013.70
+    }
 ```
-
----
-
-## 📖 Bonus Calculation Rule
-
-- **5% of base salary per year of service**
-- **Capped at 20 years**
-
-Example:  
-- Base salary = `$3000`  
-- Years of service = `12`  
-- Bonus = `3000 * 0.05 * 12 = $1800`
-
----
-
-## ✅ More Examples
-
-### Example 1 – Worker with 5 years
-```bash
-python main.py --name Bob --years 5 --salary 2000
-```
-
-Output:
-```
-Worker: Bob
-Years of service: 5
-Base salary: $2000.00
-Service bonus: $500.00
-```
-
----
-
-### Example 2 – Worker with 25 years (capped at 20)
-```bash
-python main.py --name Carol --years 25 --salary 4000
-```
-
-Output:
-```
-Worker: Carol
-Years of service: 25
-Base salary: $4000.00
-Service bonus: $4000.00
-```
-
----
 
 ## 🏛 Clean Architecture Principles
 
@@ -163,11 +187,39 @@ pytest
 
 ---
 
+## ⚙️ Dependencies
+This application was developed using Python version 3.9.
+
+---
+
+## Metadata
+/docs: This directory contains an ADR to validate each technical decision.
+
+---
+
+## 🚀 Additional (for developers)
+
+### Check code style
+```bash
+flake8 service_bonus/
+```
+
+### Auto-format code
+```bash
+black service_bonus/
+```
+
+### Sort imports
+```bash
+isort service_bonus/
+```
+
+---
+
 ## 🚀 Future Improvements
 
 - Add persistence (e.g., save/load workers from DB or JSON file).  
 - Add multiple bonus calculation strategies.  
 - Add a REST API (FastAPI) or GUI interface.  
-- Package as a Python library with `pip install`.  
-
----
+- Package as a Python library with `pip install`. 
+- Improving all business logic

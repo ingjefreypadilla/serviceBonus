@@ -13,8 +13,8 @@ def calculator():
 @pytest.fixture
 def worker():
     ausencias_no_remuneradas = [
-        "2024-04-12",
-        "2024-04-15"
+        "2023-04-12",
+        "2023-04-15"
     ]
 
     worker = Worker(
@@ -41,18 +41,17 @@ def worker():
 
 @pytest.fixture
 def expected_bonus():
-
     return {
-            "empleado": "Jefrey Padilla",
-            "periodo_calculo": "primer_semestre",
-            "salario_base_prima": 0,
-            "dias_trabajados_semestre": 0,
-            "prima_bruta": 0,
-            "renta_exenta_25_por_ciento": 0,
-            "base_gravable_impuesto": 0,
-            "impuesto_retenido": 0,
-            "prima_neta": 0
-        }
+        "empleado": "Jefrey Padilla",
+        "periodo_calculo": "primer_semestre",
+        "salario_base_prima": 3150000,
+        "dias_trabajados_semestre": 118,
+        "prima_bruta": 0,
+        "renta_exenta_25_por_ciento": 0,
+        "base_gravable_impuesto": 0,
+        "impuesto_retenido": 0,
+        "prima_neta": 0
+    }
 
 def test_should_calculate_bonus(calculator, worker, expected_bonus):
     calculated_period = "primer_semestre"
