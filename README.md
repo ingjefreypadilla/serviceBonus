@@ -197,3 +197,7 @@ pytest
 
 ## ⚙️ Dependencies
 This application was developed using Python version 3.9.
+
+
+## Metadata
+/docs: This directory contains an ADR to validate each technical decision.

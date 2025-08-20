@@ -4,6 +4,7 @@ import json
 from datetime import datetime
 
 from service_bonus.domain.worker import Worker
+from service_bonus.interfaces.dto.worker_input import WorkerInput
 from service_bonus.use_cases.calculate_bonus import BonusCalculator
 
 
@@ -18,6 +19,8 @@ def run():
                 data = json.load(f)
         else:
             data = json.loads(args.json)
+
+        WorkerInput.model_validate(data)
     except Exception as e:
         print(f"Error reading JSON or JSON Params Invalid: {e}")
         return
