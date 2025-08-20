@@ -223,3 +223,9 @@ isort service_bonus/
 - Add a REST API (FastAPI) or GUI interface.  
 - Package as a Python library with `pip install`. 
 - Improving all business logic
+
+---
+
+## Take a look
+For further information, please refer to the GitHub repository at https://github.com/ingjefreypadilla/serviceBonus. 
+This repository meticulously separates each commit and conducts thorough testing.
