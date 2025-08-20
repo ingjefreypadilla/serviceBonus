@@ -34,8 +34,8 @@ def run():
 
     calculator = BonusCalculator()
     result = calculator.calculate(worker,
-                                calculated_period=data.get("periodo_calculo", "primer_semestre"),
-                                calculated_period_method=data.get("metodo_calculo_salario", "promedio"))
+                                period_to_calculate=data.get("periodo_calculo", "primer_semestre"),
+                                method_to_calculate_period=data.get("metodo_calculo_salario", "promedio"))
 
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
