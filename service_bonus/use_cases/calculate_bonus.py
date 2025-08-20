@@ -24,7 +24,7 @@ class BonusCalculator(ICalculateBonus):
             "empleado": worker.name,
             "periodo_calculo": period_to_calculate,
             "salario_base_prima": round(base_salary, 2),
-            "dias_trabajados_semestre": 0,
+            "dias_trabajados_semestre": worked_days,
             "prima_bruta": 0,
             "renta_exenta_25_por_ciento": 0,
             "base_gravable_impuesto": 0,

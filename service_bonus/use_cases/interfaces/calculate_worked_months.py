@@ -36,7 +36,7 @@ class CalculateWorkedMonths(ICalculateWorkedMonths):
         worked_months = []
         for m in months:
             mes_num = month_name_to_number(m)
-            if worker.start_date.year < date.today().year or worker.start_date.month <= mes_num:
+            if  worker.start_date.month <= mes_num:
                 worked_months.append(m)
 
         return worked_months
