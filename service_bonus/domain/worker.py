@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from datetime import date
 from typing import Dict, List
 
+
 @dataclass
 class Worker:
     name: str

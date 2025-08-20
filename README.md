@@ -32,6 +32,8 @@ serviceBonus/
 │   │   └── repositories.py
 │   │
 │   └── interfaces/       # Delivery layer (CLI)
+│       ├──dto
+│       │   └──worker_input.py
 │       └── cli.py
 │
 └── main.py               # CLI entry point

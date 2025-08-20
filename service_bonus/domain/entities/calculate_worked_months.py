@@ -1,9 +1,12 @@
-from abc import abstractmethod, ABC
+from abc import ABC, abstractmethod
 from typing import Any
 
+from service_bonus.domain.entities.utils.date_util import (
+    MONTHS_FIRST_SEMESTER,
+    MONTHS_SECOND_SEMESTER,
+    month_name_to_number,
+)
 from service_bonus.domain.worker import Worker
-from service_bonus.domain.entities.utils.date_util import MONTHS_FIRST_SEMESTER, MONTHS_SECOND_SEMESTER, \
-    month_name_to_number
 
 
 class ICalculateWorkedMonths(ABC):
@@ -26,7 +29,7 @@ class CalculateWorkedMonths(ICalculateWorkedMonths):
         worked_months = []
         for m in months:
             mes_num = month_name_to_number(m)
-            if  worker.start_date.month <= mes_num:
+            if worker.start_date.month <= mes_num:
                 worked_months.append(m)
 
         return worked_months
