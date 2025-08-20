@@ -13,8 +13,8 @@ def calculator():
 @pytest.fixture
 def worker():
     ausencias_no_remuneradas = [
-        "2024-04-12",
-        "2024-04-15"
+        "2023-04-12",
+        "2023-04-15"
     ]
 
     worker = Worker(

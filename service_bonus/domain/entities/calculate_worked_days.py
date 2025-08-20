@@ -2,7 +2,7 @@ from abc import abstractmethod, ABC
 from typing import Any
 
 from service_bonus.domain.worker import Worker
-from service_bonus.use_cases.interfaces.calculate_worked_months import month_name_to_number
+from service_bonus.domain.entities.calculate_worked_months import month_name_to_number
 
 
 class ICalculateWorkedDays(ABC):

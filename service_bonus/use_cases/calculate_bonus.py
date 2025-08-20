@@ -2,9 +2,9 @@
 from abc import ABC, abstractmethod
 
 from service_bonus.domain.worker import Worker
-from service_bonus.use_cases.interfaces.calculate_base_salary import CalculateBaseSalary
-from service_bonus.use_cases.interfaces.calculate_worked_days import CalculateWorkedDays
-from service_bonus.use_cases.interfaces.calculate_worked_months import CalculateWorkedMonths
+from service_bonus.domain.entities.calculate_base_salary import CalculateBaseSalary
+from service_bonus.domain.entities.calculate_worked_days import CalculateWorkedDays
+from service_bonus.domain.entities.calculate_worked_months import CalculateWorkedMonths
 
 
 class ICalculateBonus(ABC):
