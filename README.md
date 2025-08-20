@@ -187,6 +187,35 @@ pytest
 
 ---
 
+## ⚙️ Dependencies
+This application was developed using Python version 3.9.
+
+---
+
+## Metadata
+/docs: This directory contains an ADR to validate each technical decision.
+
+---
+
+## 🚀 Additional (for developers)
+
+### Check code style
+```bash
+flake8 service_bonus/
+```
+
+### Auto-format code
+```bash
+black service_bonus/
+```
+
+### Sort imports
+```bash
+isort service_bonus/
+```
+
+---
+
 ## 🚀 Future Improvements
 
 - Add persistence (e.g., save/load workers from DB or JSON file).  
@@ -194,12 +223,3 @@ pytest
 - Add a REST API (FastAPI) or GUI interface.  
 - Package as a Python library with `pip install`. 
 - Improving all business logic
-
----
-
-## ⚙️ Dependencies
-This application was developed using Python version 3.9.
-
-
-## Metadata
-/docs: This directory contains an ADR to validate each technical decision.
